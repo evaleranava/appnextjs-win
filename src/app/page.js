@@ -13,6 +13,14 @@ export default function Home() {
           height={38}
           priority
         />
+        <h1>Hola mundo en </h1><h1>AZURE WEB APP</h1>
+        <Image
+          src="/azure.png"
+          alt="Next.js logo"
+          width={180}
+          height={180}
+          priority
+        />
         <ol>
           <li>
             Get started by editing <code>src/app/page.js</code>.
