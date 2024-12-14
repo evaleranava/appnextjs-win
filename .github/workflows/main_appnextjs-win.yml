@@ -27,20 +27,17 @@ jobs:
           npm run build --if-present
           npm run test --if-present
       
-      - name: List files after build
-        run: |
-          ls
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: |
             .  # Incluye todos los archivos del proyecto
+            .next  # Asegura que .next esté incluido en el paquete
 
-      - name: List files after build
+      - name: list
         run: |
-          ls
+          ls 
 
   deploy:
     runs-on: ubuntu-latest
@@ -55,15 +52,15 @@ jobs:
         with:
           name: node-app
 
-      - name: List artifact content
+      - name: list artifact
         run: |
           ls -la
-
+      
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'appnextjs-win'
           slot-name: 'Production'
-          package: .  # Debería funcionar bien si todo el contenido está allí
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9C5B89482E584E18A5E5EB3E761A5E6A }}
