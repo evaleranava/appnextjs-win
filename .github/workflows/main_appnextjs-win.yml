@@ -39,6 +39,10 @@ jobs:
             .  # Incluye todos los archivos del proyecto
             .next  # Asegura que .next esté incluido en el paquete
 
+      - name: List files after build
+        run: |
+          ls
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
