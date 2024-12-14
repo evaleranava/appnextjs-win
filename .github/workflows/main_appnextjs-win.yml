@@ -37,9 +37,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app-1
-          path: |
-            pwd
-            .next/**, package.json, public/**, src/**, node_modules/**, eslint.config.mjs, next.config.mjs, package-lock.json, package.json, README.md
+          path: D:\a\appnextjs-win\appnextjs-win\**\*
+        run: pwd
 
       - name: List files after build
         run: |
