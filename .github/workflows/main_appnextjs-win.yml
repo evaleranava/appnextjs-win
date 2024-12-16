@@ -37,11 +37,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app-1
-          path: D:\a\appnextjs-win\appnextjs-win\**\*
+          path: D:\a\appnextjs-win\appnextjs-win\**
 
-      - name: List files after build
+      - name: Verify .next folder exists
         run: |
-          ls
+          if (!(Test-Path -Path ".next")) {
+            Write-Error "The .next folder is missing. Stopping the job."
+            exit 1
+          }
 
   deploy:
     runs-on: ubuntu-latest
